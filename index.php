@@ -1,13 +1,19 @@
 <?php
+
+use Symfony\Component\Dotenv\Dotenv;
+
 require './vendor/autoload.php';
+
+$dotenv = new Dotenv();
+$dotenv->load(__DIR__ . '/.env');
 
 $medoo = new Medoo\Medoo(
   [
     'type' => 'mysql',
-    'host' => 'localhost',
-    'database' => 'zeltlager_stadt_leer',
-    'username' => 'root',
-    'password' => '81756010Fhj!',
+    'host' => $_ENV['DB_HOST'],
+    'database' => $_ENV['DB_NAME'],
+    'username' => $_ENV['DB_USER'],
+    'password' => $_ENV['DB_PASS'],
   ]
 );
 

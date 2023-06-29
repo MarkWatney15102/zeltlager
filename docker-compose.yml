@@ -1,0 +1,38 @@
+version: "3"
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "./config/nginx:/etc/nginx/conf.d"
+      - "./:var/www/zeltlager"
+    restart: always
+    depends_on:
+      - php
+      - mariadb
+  php:
+    build:
+      dockerfile: php.Dockerfile
+    container_name: php
+    volumes:
+      - "./:var/www/zeltlager"
+      - "./config/php/php.ini:/usr/local/etc/php/php.ini"
+  mariadb:
+    image: mariadb:10.3.9
+    container_name: mariadb
+    restart: on-failure
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASS:?err}
+    volumes:
+      - "./data/db/mysql:/var/lib/mysql"
+  composer:
+    build:
+      dockerfile: composer.Dockerfile
+    container_name: composer
+    volumes:
+      - "./:var/www/zeltlager"
