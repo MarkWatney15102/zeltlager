@@ -2,28 +2,28 @@ version: "3"
 services:
   nginx:
     image: nginx:alpine
-    container_name: nginx
+    container_name: ${APP_NAME:?err}-nginx
     ports:
       - "80:80"
       - "443:443"
     volumes:
       - "./config/nginx:/etc/nginx/conf.d"
-      - "./:var/www/zeltlager"
-    restart: always
+      - "./:/home/zeltlager"
+    restart: 'always'
     depends_on:
       - php
       - mariadb
   php:
     build:
       dockerfile: php.Dockerfile
-    container_name: php
+    container_name: ${APP_NAME:?err}-php
     volumes:
-      - "./:var/www/zeltlager"
+      - "./:/home/zeltlager"
       - "./config/php/php.ini:/usr/local/etc/php/php.ini"
   mariadb:
     image: mariadb:10.3.9
-    container_name: mariadb
-    restart: on-failure
+    container_name: ${APP_NAME:?err}-mariadb
+    restart: 'on-failure'
     ports:
       - "3306:3306"
     environment:
@@ -33,6 +33,7 @@ services:
   composer:
     build:
       dockerfile: composer.Dockerfile
-    container_name: composer
+    container_name: ${APP_NAME:?err}-composer
+    restart: 'on-failure'
     volumes:
-      - "./:var/www/zeltlager"
+      - "./:/home/zeltlager"
