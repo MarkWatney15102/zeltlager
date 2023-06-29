@@ -76,7 +76,7 @@ if (isset($_POST['saveInfo'])) {
                       <option value="Loga">Loga</option>
                       <option value="Leer">Leer</option>
                       <option value="Heisfelde">Heisfelde</option>
-                      <option value="Nüttermoor">Nüttermoor</option>
+                      <option value="Nuettermoor">Nüttermoor</option>
                       <option value="Bingum">Bingum</option>
                       <option value="THW">THW</option>
                     </select>
