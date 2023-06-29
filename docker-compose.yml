@@ -25,7 +25,7 @@ services:
     container_name: ${APP_NAME:?err}-mariadb
     restart: 'on-failure'
     ports:
-      - "3306:3306"
+      - "3307:3306"
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASS:?err}
     volumes:
