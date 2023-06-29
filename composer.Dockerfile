@@ -1,4 +1,4 @@
 FROM composer
 
-WORKDIR /var/www/zeltlager
+WORKDIR /home/zeltlager
 CMD ["composer", "install"]
