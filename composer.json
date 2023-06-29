@@ -1,0 +1,20 @@
+{
+  "version": "1.0.0",
+  "description": "Jugendfeuerwehr Zeltlager",
+  "name": "eikewientjes/zeltlager",
+  "autoload": {
+    "classmap": [
+      "src"
+    ]
+  },
+  "authors": [
+    {
+      "name": "MarkWatney15102",
+      "email": "eikewientjes882@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "catfan/medoo": "^2.1"
+  }
+}
