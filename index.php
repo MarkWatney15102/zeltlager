@@ -59,12 +59,19 @@ if (isset($_POST['saveInfo'])) {
         </script>
       <?php } ?>
       <div class="column is-12">
+        <article class="message is-info">
+          <div class="message-body is-size-3">
+            Ihr könnt dieses Formular auch Anonym absenden. Wenn ihr jedoch ein Lösungswort für ein Gewinnspiel an uns übermitteln wollt, ist es notwendig, dass wir einen Namen übertragt.
+          </div>
+        </article>
+      </div>
+      <div class="column is-12">
         <div class="box">
           <h3 class="title is-size-1">Wen möchtest du grüßen oder was muss in die Lagerzeitung</h3>
           <div class="box-body">
             <form method="post">
               <div class="field">
-                <label for="name" class="label is-size-3">Dein Name</label>
+                <label for="name" class="label is-size-3">Dein Name (Kann auch wegelassen werden)</label>
                 <input type="text" name="name" id="name" class="input is-large">
               </div>
               <div class="field">
@@ -72,7 +79,7 @@ if (isset($_POST['saveInfo'])) {
                 <div class="control is-expanded">
                   <div class="select is-fullwidth is-large">
                     <select name="jugendfeuerwehr" id="jugendfeuerwehr">
-                      <option value="">-- Bitte wählen --</option>
+                      <option value="Anonym">-- Anonym --</option>
                       <option value="Loga">Loga</option>
                       <option value="Leer">Leer</option>
                       <option value="Heisfelde">Heisfelde</option>
